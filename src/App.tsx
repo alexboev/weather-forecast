@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import Forecast from './components/forecast';
+import Loading from './components/loading';
+import { getLoadingStatus } from './store/store';
 
-function App() {
+
+const App = (props: {
+
+}) => {
+  const loadingStatus = useSelector(getLoadingStatus);
+  const isLoaded = loadingStatus === "succeeded";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    isLoaded ? <Forecast /> : <Loading />
   );
 }
 
