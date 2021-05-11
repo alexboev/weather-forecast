@@ -32,7 +32,7 @@ export interface IForecastResponse {
 }
 
 export function loadForecastFromServer(location: string): Promise<IForecastResponse> {
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${apiKey}&cnt=${limitBy}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${apiKey}&cnt=${limitBy}`;
     return new Promise<IForecastResponse>((resolve, reject) => {
         fetch(url, {
             method: 'GET',
